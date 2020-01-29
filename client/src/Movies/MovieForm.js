@@ -47,10 +47,19 @@ const MovieForm = props => {
             })
     }
 
+    const handleDelete = e => {
+        e.preventDefault();
+        axios.delete(`http://localhost:5000/api/movies/${id}`)
+            .then(response => {
+                console.log(response);
+                props.history.push("/");
+            })
+    }
+
     return (
         <div className='MovieForm'>
             <h1>Movie Form</h1>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <input
                     type='text'
                     placeholder='Id'
@@ -86,7 +95,8 @@ const MovieForm = props => {
                     value={item.stars}
                     onChange={handleChange}
                 />
-                <button>Save</button>
+                <button onClick={handleSubmit} className='update-button'>Update</button>
+                <button onClick={handleDelete} className='delete-button'>Delete</button>
             </form>
         </div>
     )
