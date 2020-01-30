@@ -40,6 +40,10 @@ body {
   margin-right: 10px;
 }
 
+.nav-buttons {
+  display: flex;
+}
+
 .saved-movie {
   margin: 0 10px;
 }
@@ -105,7 +109,12 @@ body {
 
 .home-button {
   padding: 5px 10px;
+  margin-right: 20%;
   background-color: lightskyblue;
+}
+
+.add-button {
+  width: 190px;
 }
 
 .movie-warning {
@@ -125,4 +134,6 @@ body {
 
 .MovieForm form input {
   margin: 1%;
+  width: 200px;
+  height: 30px;
 }

@@ -10,36 +10,35 @@ const initialItem = {
     stars: '',
   }
 
-
-const MovieForm = props => {
+const AddMovie = props => {
     const [item, setItem] = useState(initialItem);
     const { id } = useParams();
 
     useEffect( () => {
     axios.get(`http://localhost:5000/api/movies/${id}`)
         .then( (response) => {
-            console.log(response.data);
             setItem(response.data);
         })
     },[id]);
-    console.log(id);
 
     const handleChange = e => {
         e.preventDefault();
         setItem({
             ...item,
             [e.target.name]: e.target.value,
-            stars: [e.target.value]
+            stars: [e.target.value],
+            id: Date.now(),
         });
-        console.log(item);
     }
     
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/api/movies/${id}`, item)
+        axios.post('http://localhost:5000/api/movies', item)
             .then(response => {
                 console.log(response);
-                setItem(initialItem);
+                setItem({
+                    ...response.data
+                });
                 props.history.push("/");
             })
             .catch(error => {
@@ -47,26 +46,10 @@ const MovieForm = props => {
             })
     }
 
-    const handleDelete = e => {
-        e.preventDefault();
-        axios.delete(`http://localhost:5000/api/movies/${id}`)
-            .then(response => {
-                console.log(response);
-                props.history.push("/");
-            })
-    }
-
     return (
         <div className='MovieForm'>
-            <h1>Movie Form</h1>
+            <h1>Add Movie</h1>
             <form>
-                <input
-                    type='text'
-                    placeholder='Id'
-                    name='id'
-                    value={item.id}
-                    onChange={handleChange}
-                />
                 <input
                     type='text'
                     placeholder='Title'
@@ -95,11 +78,10 @@ const MovieForm = props => {
                     value={item.stars}
                     onChange={handleChange}
                 />
-                <button onClick={handleSubmit} className='update-button'>Update</button>
-                <button onClick={handleDelete} className='delete-button'>Delete</button>
+                <button onClick={handleSubmit} className='update-button'>Add</button>
             </form>
         </div>
     )
 }
 
-export default MovieForm;
+export default AddMovie;
