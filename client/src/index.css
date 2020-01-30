@@ -40,6 +40,10 @@ body {
   margin-right: 10px;
 }
 
+.nav-buttons {
+  display: flex;
+}
+
 .saved-movie {
   margin: 0 10px;
 }
@@ -66,12 +70,70 @@ body {
   color: white;
 }
 
+.edit-button {
+  position: absolute;
+  top: 60px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 15px;
+  background-color: lightseagreen;
+  text-decoration: none;
+  color: black;
+}
+.edit-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.update-button {
+  border: 1px solid grey;
+  padding: 5px 15px;
+  margin: 1%;
+  background-color: lightseagreen;
+}
+.update-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.delete-button {
+  border: 1px solid grey;
+  padding: 5px 15px;
+  margin: 1%;
+  background-color: red;
+}
+.delete-button:hover {
+  background-color: green;
+  color: white;
+}
+
 .home-button {
   padding: 5px 10px;
+  margin-right: 20%;
   background-color: lightskyblue;
+}
+
+.add-button {
+  width: 190px;
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.MovieForm {
+  text-align: center;
+}
+
+.MovieForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MovieForm form input {
+  margin: 1%;
+  width: 200px;
+  height: 30px;
 }
